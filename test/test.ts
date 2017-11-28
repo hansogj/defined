@@ -1,4 +1,4 @@
-import { defined, definedList } from '../src/';
+import { defined, definedList } from '../src/index';
 
 describe('defined', () => {
 

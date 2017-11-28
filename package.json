@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "description": "checks if your properties or values are defined",
   "main": "dist/index.js",
+  "module": "dist/defined.js",
+  "typings": "dist/types/polyfils.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "npm run test"
+    "test": "karma start  karma.conf.js --single-run",
+    "prepublish": "rm -rf ./dist/* && npm run test && tsc -p tsconfig.json && npm run tsify",
+    "tsify": "node tsify.js > dist/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -21,13 +28,21 @@
   },
   "homepage": "https://github.com/hansogj/defined",
   "devDependencies": {
+    "@types/jasmine": "^2.8.2",
+    "@types/node": "^8.0.0",
+    "browserify": "^14.5.0",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
     "karma-browserify": "^5.1.2",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.4",
-    "tslint": "^5.8.0",
+    "karma-typescript": "^3.0.8",
+    "tsify": "^3.0.3",
+   "tslint": "^5.8.0",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+
   }
 }
