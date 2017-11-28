@@ -10,16 +10,17 @@ npm i array.defined
 
 ```javscript
 
+// include polyfill to you project or expose it to global
+
 [1,2, null, undefined].defined() // [1,2]
 
 defined(null) // false
 
 defined(undefined) // false
 
-
 definedList([1,2]) // [1,2]
 definedList([undefined, null]) // []
-
+```
 
 ## Publish
 
