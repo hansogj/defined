@@ -1,0 +1,33 @@
+{
+  "name": "defined",
+  "version": "1.0.0",
+  "description": "checks if your properties or values are defined",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansogj/defined.git"
+  },
+  "keywords": [
+    "defined",
+    "properties"
+  ],
+  "author": "hansogj@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hansogj/defined/issues"
+  },
+  "homepage": "https://github.com/hansogj/defined",
+  "devDependencies": {
+    "jasmine-core": "^2.8.0",
+    "karma": "^1.7.1",
+    "karma-browserify": "^5.1.2",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
+}
