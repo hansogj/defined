@@ -3,7 +3,10 @@
   "version": "1.0.2",
   "description": "checks if your properties or values are defined",
   "main": "dist/bundle.ts",
-  "typings": ["dist/types/polyfils.d.ts", "dist/types/defined.d.ts"],
+  "typings": [
+    "dist/types/polyfils.d.ts",
+    "dist/types/defined.d.ts"
+  ],
   "files": [
     "dist",
     "src"
