@@ -1,4 +1,5 @@
-import { defined, definedList } from '../src/index';
+import { defined, definedList } from '../src/defined';
+
 
 describe('defined', () => {
 
@@ -19,6 +20,13 @@ describe('defined', () => {
            [{ a: {} }, { a: [1, 2, 3] }, { a: 'tekstlig innhold' }, { a: true }].
            forEach((obj: any) => expect(defined(obj.a)).toBeTruthy(obj)));
     });
+    describe('function', () => {
+        it('forventer definerte function ', () => {
+            [function() {}, ()=> {}]
+                .forEach((obj: any) => expect(defined(obj)).toBeTruthy(obj));
+        });
+    });
+
 });
 
 describe('definedList', () => {

@@ -16,6 +16,10 @@ export function defined(prop: any): boolean {
         return false;
     }
 
+    if (typeof prop  === 'function') {
+        return true;
+    }
+
     if (prop.hasOwnProperty('length')) {
         return prop.length > 0;
     }

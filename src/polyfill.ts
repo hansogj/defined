@@ -1,4 +1,4 @@
-import {defined, definedList } from './index';
+import {defined, definedList } from './defined';
 
 declare global {
   interface Array<T> {

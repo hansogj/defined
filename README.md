@@ -10,6 +10,10 @@ npm i array.defined
 
 ```javscript
 
+// into typings.d.ts
+/// <reference path="../node_modules/array.defined/dist/types/polyfill.d.ts" />
+/// <reference path="../node_modules/array.defined/dist/types/defined.d.ts" />
+
 // include polyfill to you project or expose it to global
 
 [1,2, null, undefined].defined() // [1,2]
