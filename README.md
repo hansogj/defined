@@ -3,7 +3,7 @@ Cheks if properties or variables are defined
 
 
 ```bash
-npm i array.defined
+$>  npm i array.defined
 ```
 
 ## Usage
@@ -11,10 +11,18 @@ npm i array.defined
 ```javscript
 
 // into typings.d.ts
-/// <reference path="../node_modules/array.defined/dist/types/polyfill.d.ts" />
-/// <reference path="../node_modules/array.defined/dist/types/defined.d.ts" />
+    "typeRoots": [
+     // ...
+      "node_modules/array.defined"
+    ]
 
-// include polyfill to you project or expose it to global
+
+// import defined or polyfill into your src
+
+
+import {defined} from 'array.defined';
+import  'array.defined/lib/polyfill';
+
 
 [1,2, null, undefined].defined() // [1,2]
 
@@ -25,6 +33,9 @@ defined(undefined) // false
 definedList([1,2]) // [1,2]
 definedList([undefined, null]) // []
 ```
+
+
+Does allso support ESM import
 
 ## Publish
 
