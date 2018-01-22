@@ -4,6 +4,7 @@ declare global {
   interface Array<T> {
     defined(): Array<T>;
     allDefined(): Array<T>;
+    first(): Array<T>;
   }
 }
 
@@ -19,4 +20,11 @@ Array.prototype.allDefined = defined(Array.prototype.allDefined) ?
     function (this: any[]) {
         return this.every((prop: any) => defined(prop)) ?
             this : [];
+    };
+
+
+Array.prototype.first = defined(Array.prototype.first) ?
+    Array.prototype.first :
+    function (this: any[]) {
+        return this.filter((_, i)  => i === 0);
     };
