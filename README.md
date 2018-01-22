@@ -32,6 +32,12 @@ defined(undefined) // false
 
 definedList([1,2]) // [1,2]
 definedList([undefined, null]) // []
+
+
+
+// filter first
+
+[1,2,3].first()  //  [1]
 ```
 
 
