@@ -29,3 +29,7 @@ export function defined(prop: any): boolean {
     }
     return true;
 }
+
+export function allDefined(prop: any[]):boolean{
+    return definedList(prop).length === prop.length;
+}
