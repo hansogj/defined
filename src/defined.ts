@@ -1,3 +1,5 @@
+import { List } from 'immutable';
+
 export function definedList(prop: any): any[] {
     if (!defined(prop) || !defined(prop.constructor)) {
         return [];
@@ -16,7 +18,7 @@ export function defined(prop: any): boolean {
         return false;
     }
 
-    if (typeof prop  === 'function') {
+    if (typeof prop === 'function') {
         return true;
     }
 
@@ -33,3 +35,9 @@ export function defined(prop: any): boolean {
     }
     return true;
 }
+
+
+export type DefinedList<T> = List<T> & {
+    defined: () => List<T>,
+    allDefined: () => List<T>
+};

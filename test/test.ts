@@ -1,14 +1,16 @@
 import { List } from 'immutable';
-import { defined, definedList,  } from '../src/defined';
+import { defined, definedList, DefinedList } from '../src/defined';
+import '../src/polyfill';
+
 
 describe('defined', () => {
 
     it('forventer udefinerte ', () =>
-       [undefined, null, [], false, '', List(), List([])].
+        [undefined, null, [], false, '', List(), List([])].
             forEach((a: any) => expect(defined(a)).toBeFalsy(a)));
 
     it('forventer definerte ', () =>
-        [{}, [1, 2, 3], 'tekstlig innhold', true, 0, 1, List([0,1,2])].
+        [{}, [1, 2, 3], 'tekstlig innhold', true, 0, 1, List([0, 1, 2])].
             forEach((a: any) => expect(defined(a)).toBeTruthy(a)));
 
     describe('objekter', () => {
@@ -50,26 +52,25 @@ describe('definedList', () => {
 
 });
 
+
 describe('[].defined]', () => {
-    it('forventer kunde elementene i en liste som er definert', () =>
+    it('forventer kun de elementene i en liste som er definert', () =>
         [[1, false], [1, undefined]].
             forEach((a: any[]) => expect(a.defined()).toEqual([1], a)));
-
-    xit('forventer alle elementene i en liste må være definert', () =>
-        [[1, true], [1, !undefined]].
-            forEach((a: any[]) => expect(a.defined()).toEqual([2], a)));
-});
-
-
-
-describe('List.defined]', () => {
-    it('forventer kunde elementene i en liste som er definert', () =>
-        [List([1, false]), List([1, undefined])].
-            forEach((a: List<any>) => expect(a.defined()).toEqual(List([1]), a)));
 
     it('forventer alle elementene i en liste må være definert', () =>
-        [[1, false], [1, undefined]].
-            forEach((a: any[]) => expect(a.defined()).toEqual([1], a)));
+        [[1, true], [1, 'a']].
+            forEach((a: any[]) => expect(a.defined().length).toEqual(2, a)));
+});
+
+describe('List.defined]', () => {
+    it('forventer kun de elementene i en liste som er definert', () =>
+        [List([1, false]), List([1, undefined])].
+            forEach((a: DefinedList<any>) => expect(a.defined().first()).toEqual(1, a)));
+
+    it('forventer alle elementene i en liste må være definert', () =>
+        [List([1, true]), List([1, 'a'])].
+            forEach((a: DefinedList<any>) => expect(a.defined().size).toEqual(2, a)));
 });
 
 describe('[].allDefined]', () => {
@@ -82,6 +83,15 @@ describe('[].allDefined]', () => {
 });
 
 
+describe('List.allDefined]', () => {
+    it('forventer alle elementene i en liste må være definert', () =>
+        [List([1, false]), List([1, undefined])].
+            forEach((a: DefinedList<any>) => expect(a.allDefined().size).toBe(0)));
+    it('forventer alle elementene i en liste må være definert', () =>
+        [List([1, true]), List([1, 'a'])].
+            forEach((a: DefinedList<any>) => expect(a.allDefined().size).toBe(2)));
+});
+
 
 describe('first', () => {
 
@@ -90,7 +100,7 @@ describe('first', () => {
     beforeEach(() => spy = jasmine.createSpy('mySpy'));
 
     describe('tom array', () => {
-        beforeEach(() =>  [].first().map(i => spy(i)));
+        beforeEach(() => [].first().map(i => spy(i)));
         it('spy skal ikke kalles', () =>
             expect(spy).not.toHaveBeenCalled());
     });
@@ -99,7 +109,7 @@ describe('first', () => {
         beforeEach(() => [1].first().map(i => spy(i)));
         it('spy skal kalles en gang', () =>
             expect(spy).toHaveBeenCalled());
-            it('spy skal kalles en gang', () =>
+        it('spy skal kalles en gang', () =>
             expect(spy).toHaveBeenCalledWith(1));
     });
 
@@ -107,7 +117,7 @@ describe('first', () => {
         beforeEach(() => [1, {}, 'a'].first().map(i => spy(i)));
         it('spy skal kalles en gang', () =>
             expect(spy).toHaveBeenCalled());
-            it('spy skal kalles en gang', () =>
+        it('spy skal kalles en gang', () =>
             expect(spy).toHaveBeenCalledWith(1));
     });
 });

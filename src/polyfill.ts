@@ -1,4 +1,4 @@
-import { List } from 'immutable';
+import { Iterable, List } from 'immutable';
 import { defined, definedList } from './defined';
 
 declare global {
@@ -8,7 +8,6 @@ declare global {
         first(): Array<T>;
     }
 }
-
 
 Array.prototype.defined = defined(Array.prototype.defined) ?
     Array.prototype.defined :
@@ -30,10 +29,16 @@ Array.prototype.first = defined(Array.prototype.first) ?
         return this.filter((_, i) => i === 0);
     };
 
+Iterable.prototype.defined = defined(Iterable.prototype.defined) ?
+    Iterable.prototype.defined :
+    function (this: any) {
+        return this.toList().filter(e => defined(e));
+    };
 
-List.prototype.defined = defined(List.prototype.defined) ?
-    List.prototype.defined :
-    function (this: List<any>) {
-        return this.every((prop: any) => defined(prop)) ?
-            List([])
-    }
+
+Iterable.prototype.allDefined = defined(Iterable.prototype.allDefined) ?
+    Iterable.prototype.allDefined :
+    function (this: any) {
+        return this.toList().every(e => defined(e)) ?
+            this : List()
+    };
