@@ -9,7 +9,7 @@
     "test:watch": "karma start  karma.conf.js --browsers=Chrome",
     "bundle": "npm run clean && npm run test && npm run build",
     "clean": "rm -rf ./dist ./lib/ ./lib-esm/ ./_bundles ",
-    "build": "tsc && tsc -m es6 --outDir lib-esm &&  webpack",
+    "build": "tsc && tsc -m commonjs --outDir lib-esm &&  webpack",
     "prepublish": "npm run bundle"
   },
   "repository": {
@@ -40,9 +40,10 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-typescript": "^3.0.8",
     "tsify": "^3.0.3",
-    "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "webpack": "^3.9.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "immutable": "3.8.2"
+  }
 }

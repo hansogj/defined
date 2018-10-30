@@ -20,7 +20,7 @@ $>  npm i array.defined
 // import defined or polyfill into your src
 
 
-import {defined} from 'array.defined';
+import {defined, DefinedList} from 'array.defined';
 import  'array.defined/lib/polyfill';
 
 
@@ -38,6 +38,15 @@ definedList([undefined, null]) // []
 // filter first
 
 [1,2,3].first()  //  [1]
+
+
+// support for immutable lists
+
+const list: DefinedList<any>  = List([1, 2, 3, 0, 5, undefined, 6, false, true])  as DefinedList<any>
+
+const definedOnly = list.defined().toList();
+// List [1,2,3,0,5,6,true]
+ 
 ```
 
 
