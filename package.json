@@ -31,6 +31,7 @@
     "@types/node": "^8.0.0",
     "awesome-typescript-loader": "^3.4.1",
     "browserify": "^14.5.0",
+    "immutable": "^3.8.2",
     "jasmine-core": "^2.8.0",
     "karma": "^1.7.1",
     "karma-browserify": "^5.1.2",

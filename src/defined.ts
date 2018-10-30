@@ -24,6 +24,10 @@ export function defined(prop: any): boolean {
         return prop.length > 0;
     }
 
+    if (prop.hasOwnProperty('size')) {
+        return prop.size > 0;
+    }
+
     if (typeof prop === 'boolean') {
         return prop;
     }
