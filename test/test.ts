@@ -120,4 +120,33 @@ describe('first', () => {
         it('spy skal kalles en gang', () =>
             expect(spy).toHaveBeenCalledWith(1));
     });
+
+describe('last', () => {
+
+    let spy: jasmine.Spy;
+
+    beforeEach(() => spy = jasmine.createSpy('mySpy'));
+
+    describe('tom array', () => {
+        beforeEach(() => [].last().map(i => spy(i)));
+        it('spy skal ikke kalles', () =>
+            expect(spy).not.toHaveBeenCalled());
+    });
+
+    describe('ett elements array', () => {
+        beforeEach(() => [1].last().map(i => spy(i)));
+        it('spy skal kalles en gang', () =>
+            expect(spy).toHaveBeenCalled());
+        it('spy skal kalles en gang', () =>
+            expect(spy).toHaveBeenCalledWith(1));
+    });
+
+    describe('mangfoldent elements array', () => {
+        beforeEach(() => [1, {}, 'a'].last().map(i => spy(i)));
+        it('spy skal kalles en gang', () =>
+            expect(spy).toHaveBeenCalled());
+        it('spy skal kalles en gang', () =>
+            expect(spy).toHaveBeenCalledWith('a'));
+    });
+
 });

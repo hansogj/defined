@@ -8,6 +8,7 @@ declare global  {
         defined(): Array<T>;
         allDefined(): Array<T>;
         first(): Array<T>;
+        last(): Array<T>;
     }
 }
 

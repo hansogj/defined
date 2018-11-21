@@ -6,6 +6,7 @@ declare global {
         defined(): Array<T>;
         allDefined(): Array<T>;
         first(): Array<T>;
+        last(): Array<T>;
     }
 }
 
@@ -28,6 +29,13 @@ Array.prototype.first = defined(Array.prototype.first) ?
     function (this: any[]) {
         return this.filter((_, i) => i === 0);
     };
+
+Array.prototype.last = defined(Array.prototype.last) ?
+    Array.prototype.last :
+    function (this: any[]) {
+        return this.filter((_, i) => i === this.length - 1);
+    };
+
 
 Iterable.prototype.defined = defined(Iterable.prototype.defined) ?
     Iterable.prototype.defined :
