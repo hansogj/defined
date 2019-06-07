@@ -10,6 +10,7 @@
     "bundle": "npm run clean && npm run test && npm run build",
     "clean": "rm -rf ./dist ./lib/ ./lib-esm/ ./_bundles ",
     "build": "tsc && tsc -m commonjs --outDir lib-esm &&  webpack",
+    "postversion": "git push && git push --tags"
     "prepublish": "npm run bundle"
   },
   "repository": {
