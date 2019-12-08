@@ -1,6 +1,6 @@
 {
   "name": "array.defined",
-  "version": "2.4.2-0",
+  "version": "2.4.2",
   "description": "checks if your properties or values are defined",
   "main": "./lib/defined.js",
   "types": "types.d.ts",
